@@ -1,0 +1,156 @@
+.modal {
+  display: flex;
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.modal_visible {
+  display: flex;
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+}
+
+.form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 28px;
+  max-width: 436px;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 20px;
+  max-width: 496px;
+  width: 100%;
+  position: relative;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin: 28px 0 24px;
+}
+
+.form__label-text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.form__input {
+  margin-bottom: 24px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+}
+
+.form__weather-select-header {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.form__submit-button {
+  border: none;
+  width: 124px;
+  height: 36px;
+  margin-top: 32px;
+  margin-bottom: 36px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+}
+
+.form__submit-button:hover {
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.form__submit-button_disabled {
+  border: none;
+  margin-top: 32px;
+  margin-bottom: 36px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.form__weather-select-option{
+  margin-bottom: 8px;
+}
+
+.form__weather-select-option:last-of-type{
+  margin-bottom: 0;
+}
+
+.form__weather-select-input {
+  margin-right: 5px;
+  accent-color: black;
+}
+
+.form__close-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 28px;
+  top: 20px;
+  cursor: pointer;
+  background-image: url('../../assets/close-button.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border: none;
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    position: absolute;
+    height: 455px;
+    width: 86%;
+    bottom: 0px;
+    /* border: 1px solid red; */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .form__submit-button {
+    width: 100%;
+  }
+}

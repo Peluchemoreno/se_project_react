@@ -5,8 +5,17 @@
 
 .app__content {
   max-width: 1360px;
+  min-width: 400px;
   padding: 0 20px;
   margin: 0 auto;
-  /* border: 1px solid rgb(0, 0, 0); */
   margin-top: 32px;
+}
+
+@media screen and (max-width: 700px) {
+  .app__content {
+    margin: 0;
+    padding: 0;
+    padding-top: 18px;
+    padding: 18px 12px 20px
+  }
 }
