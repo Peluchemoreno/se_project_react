@@ -33,8 +33,6 @@
 }
 
 .card__image {
-  object-fit: contain;
-  height: 100%;
   width: 100%;
   border-radius: 19px;
 }
@@ -59,9 +57,15 @@
   }
 
   .card {
-    flex-basis: 164px;
+    /* flex-basis: 164px; */
     height: 164px;
-    flex-grow: 1;
+    width: 164px;
+    /* flex-grow: 1; */
+  }
+
+  .card__image {
+    width: 164px;
+    height: 164px;
   }
 
   .cards__text{
