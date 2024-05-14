@@ -10,6 +10,7 @@ export default function ModalWithForm({children, buttonText, title, activeModal,
         {children}
         <button type='submit' className="form__submit-button">{buttonText}</button>
       </form>
+
     </div>
   )
 }

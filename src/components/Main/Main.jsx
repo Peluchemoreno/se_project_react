@@ -1,9 +1,10 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
+import randomizeImage from '../../assets/randomize-logo.svg'
 import '../Main/Main.css'
 
-export default function Main({ weatherData }){
+export default function Main({ weatherData, handleCardClick }){
   return (
     <>
       <main>
@@ -17,10 +18,16 @@ export default function Main({ weatherData }){
             // })
             .map((item, index) => {
               return (
-                <ItemCard key={index} item={item} />
+                <ItemCard key={index} item={item} onCardClick={handleCardClick}/>
               )
             })}
           </ul>
+        </section>
+        <section className="randomize">
+          <button type='button' className="randomize__button">
+            <img src={randomizeImage} alt="randomize" className="randomize__logo" />
+            <p className="randomize__text">Randomize</p>
+          </button>
         </section>
       </main>
     </>

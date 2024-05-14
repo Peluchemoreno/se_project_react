@@ -8,6 +8,7 @@
   border-radius: 19px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .card__title {
@@ -28,6 +29,7 @@
   gap: 21px;
   padding: 0;
   place-content: center;
+  margin: 0;
 }
 
 .card__image {
@@ -37,7 +39,20 @@
   border-radius: 19px;
 }
 
-@media screen and (max-width: 700px) {
+.cards__text {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  margin-top: 40px;
+  margin-bottom: 34px;
+}
+
+.randomize {
+  display: none;
+}
+
+@media screen and (max-width: 707px) {
   .cards__list {
     display: flex;
     flex-wrap: wrap;
@@ -52,5 +67,35 @@
   .cards__text{
     font-size: 20px;
     font-weight: 700;
+ 
+  }
+
+  .card__title {
+    top: 7px;
+  }
+
+  .randomize {
+    display: block;
+  }
+  
+  .randomize__button {
+    background-color: black;
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 20px;
+    height: 44px;
+  }
+
+  .randomize__text {
+    display: inline-block;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

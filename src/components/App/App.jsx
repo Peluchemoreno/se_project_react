@@ -4,6 +4,7 @@ import Header from '../Header/Header.jsx'
 import Main from '../Main/Main.jsx'
 import Footer from '../Footer/Footer.jsx'
 import ModalWithForm from '../ModalWithForm/ModalWithForm.jsx'
+import ItemModal from '../ItemModal/ItemModal.jsx'
 
 function App() {
 
@@ -15,6 +16,13 @@ function App() {
   const [activeModal, setActiveModal] = useState('')
 
   const [activeMobileModal, setMobileModal] = useState('')
+
+  const [selectedCard, setSelectedCard] = useState({})
+
+  function handleCardClick(card){
+    setActiveModal('preview')
+    setSelectedCard(card)
+  }
 
   function closeModal(){
     setActiveModal('')
@@ -31,7 +39,7 @@ function App() {
       <div className='app'>
         <div className="app__content">
           <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal}/>
-          <Main weatherData={weatherData} />
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
           <Footer />
         </div>
         <ModalWithForm title='New garment' buttonText='Add garment' activeModal={activeModal} handleCloseModal={closeModal} handleCloseMobileModal={closeMobileModal}>
@@ -59,6 +67,7 @@ function App() {
           </div>
         </div>
         </ModalWithForm>
+        <ItemModal activeModal={activeModal} card={selectedCard} handleCloseModal={closeModal}/>
       </div>
     </>
   )
