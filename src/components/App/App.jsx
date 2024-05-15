@@ -17,8 +17,8 @@ function App() {
   }, [])
   
   const [weatherData, setWeatherData] = useState({
-    weather: `cold`,
-    cityName: 'Location',
+    weather: ``,
+    cityName: '',
     currentTemp: {
       F: 99,
       C: 99,

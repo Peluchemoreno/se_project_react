@@ -14,9 +14,9 @@ export function getWeather(){
       }
     }
 
-    if (temperature >= 86){
+    if (temperature > 86){
       weatherData['weather'] = 'hot'
-    } else if (temperature >= 66 && temperature <= 85){
+    } else if (temperature >= 66 && temperature < 86){
       weatherData['weather'] = 'warm'
     } else {
       weatherData['weather'] = 'cold'
