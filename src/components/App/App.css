@@ -2,15 +2,19 @@
   background-color: #F3F3F3;
   /* background: linear-gradient(45deg, #e3ffe7 0%, #d9e7ff 100%); */
   font-family: 'Cabinet';
+  box-sizing: border-box;
+  height: 100vh;
 }
 
 .app__content {
+  box-sizing: border-box;
+  height: 100%;
   max-width: 1360px;
   min-width: 400px;
-  padding: 0 20px;
   margin: 0 auto;
   padding-top: 32px;
-  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 707px) {
