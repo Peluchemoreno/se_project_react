@@ -2,7 +2,7 @@ import './Header.css';
 import logo from '../../assets/wtwr-logo.svg'
 import profilePicture from '../../assets/profile-pic.png'
 
-export default function Header({onAddGarmentClick, handleMobileMenuClick, currentActiveMobileModal, handleCloseModal}){
+export default function Header({onAddGarmentClick, handleMobileMenuClick, currentActiveMobileModal, handleCloseModal, weatherData}){
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',
     day: 'numeric'
@@ -11,7 +11,7 @@ export default function Header({onAddGarmentClick, handleMobileMenuClick, curren
   return (
     <header className='header'>
       <img src={logo} alt="logo" className="header__logo" />
-      <p className="header__date-and-location">{currentDate}, Location</p>
+      <p className="header__date-and-location">{currentDate}, {weatherData.cityName}</p>
 
       <button type='button' className="header__mobile-menu-button" onClick={()=>{
         handleMobileMenuClick('mobile-menu')

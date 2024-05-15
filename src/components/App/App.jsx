@@ -18,7 +18,7 @@ function App() {
   
   const [weatherData, setWeatherData] = useState({
     weather: `cold`,
-    cityName: '',
+    cityName: 'Location',
     currentTemp: {
       F: 99,
       C: 99,
@@ -50,7 +50,7 @@ function App() {
     <>
       <div className='app'>
         <div className="app__content">
-          <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal}/>
+          <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal} weatherData={weatherData}/>
           <Main weatherData={weatherData} handleCardClick={handleCardClick} />
           <Footer />
         </div>
