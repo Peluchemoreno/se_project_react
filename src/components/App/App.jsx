@@ -1,16 +1,28 @@
-import { act, useState } from 'react'
+import { act, useEffect, useState } from 'react'
 import './App.css'
 import Header from '../Header/Header.jsx'
 import Main from '../Main/Main.jsx'
 import Footer from '../Footer/Footer.jsx'
 import ModalWithForm from '../ModalWithForm/ModalWithForm.jsx'
 import ItemModal from '../ItemModal/ItemModal.jsx'
+import { getWeather } from '../../utils/weatherApi.js'
+
 
 function App() {
 
+  useEffect(()=>{
+    getWeather().then(data => {
+      setWeatherData(data)
+    })
+  }, [])
+  
   const [weatherData, setWeatherData] = useState({
     weather: `cold`,
-    isDay: true,
+    cityName: '',
+    currentTemp: {
+      F: 99,
+      C: 99,
+    }
   })
 
   const [activeModal, setActiveModal] = useState('')

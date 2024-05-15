@@ -1,5 +1,6 @@
 .app {
   background-color: #F3F3F3;
+  /* background: linear-gradient(45deg, #e3ffe7 0%, #d9e7ff 100%); */
   font-family: 'Cabinet';
 }
 
@@ -8,7 +9,8 @@
   min-width: 400px;
   padding: 0 20px;
   margin: 0 auto;
-  margin-top: 32px;
+  padding-top: 32px;
+  /* height: 100vh; */
 }
 
 @media screen and (max-width: 707px) {
@@ -19,3 +21,4 @@
     padding: 18px 12px 20px
   }
 }
+

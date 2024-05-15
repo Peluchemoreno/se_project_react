@@ -1,6 +1,7 @@
 import './Header.css';
 import logo from '../../assets/wtwr-logo.svg'
 import profilePicture from '../../assets/profile-pic.png'
+
 export default function Header({onAddGarmentClick, handleMobileMenuClick, currentActiveMobileModal, handleCloseModal}){
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',
