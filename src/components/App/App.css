@@ -4,6 +4,7 @@
   font-family: 'Cabinet';
   box-sizing: border-box;
   height: 100vh;
+  padding: 0px 40px;
 }
 
 .app__content {

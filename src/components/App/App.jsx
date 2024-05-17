@@ -1,4 +1,4 @@
-import { act, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from '../Header/Header.jsx'
 import Main from '../Main/Main.jsx'
@@ -20,8 +20,8 @@ function App() {
     weather: ``,
     cityName: '',
     currentTemp: {
-      F: 99,
-      C: 99,
+      F: 0,
+      C: 0,
     }
   })
 

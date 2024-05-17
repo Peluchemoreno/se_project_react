@@ -5,13 +5,33 @@ export function getWeather(){
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${apiKey}`).then(res => res.ok ? res.json() : Promise.reject(error => {
     console.error(error)
   })).then(data => {
-    const temperature = Math.floor(data.main.temp);
+    
+    function getTemperature(temperature){
+      return Math.floor(temperature)
+    }
+
+    function convertToCelsius(temperature){
+      return Math.floor((temperature - 32) * (5/9))
+    }
+
+    function convertSecondsToMilliseconds(seconds){
+      return seconds * 1000
+    }
+
+    function isDay({sunrise, sunset}, currentTime){
+      return currentTime > convertSecondsToMilliseconds(sunrise) && currentTime < convertSecondsToMilliseconds(sunset)
+    }
+    
+    const temperature = getTemperature(data.main.temp);
+
     const weatherData = {
       cityName: data.name,
       currentTemp: {
         F: temperature,
-        C: Math.floor(((temperature - 32) * (5/9)))
-      }
+        C: convertToCelsius(temperature)
+      },
+      weatherDescription: data.weather[0].main.toLowerCase(),
+      isDay: isDay(data.sys, Date.now()),
     }
 
     if (temperature > 86){
@@ -21,6 +41,7 @@ export function getWeather(){
     } else {
       weatherData['weather'] = 'cold'
     }
+    // console.log(weatherData)
     return weatherData
   })
 }
