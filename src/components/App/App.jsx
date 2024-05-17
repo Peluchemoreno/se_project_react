@@ -51,7 +51,7 @@ function App() {
       <div className='app'>
         <div className="app__content">
           <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal} weatherData={weatherData}/>
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} handleCloseModal={closeMobileModal}/>
           <Footer />
         </div>
         <ModalWithForm title='New garment' buttonText='Add garment' activeModal={activeModal} handleCloseModal={closeModal} handleCloseMobileModal={closeMobileModal}>

@@ -1,9 +1,10 @@
 import './ItemCard.css'
 
-export default function ItemCard({item, onCardClick}){
+export default function ItemCard({item, onCardClick, handleCloseModal}){
 
   function handleCardClick(){
     onCardClick(item)
+    handleCloseModal()
   }
   return (
     <li onClick={handleCardClick} className="card">

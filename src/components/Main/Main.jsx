@@ -4,7 +4,7 @@ import { defaultClothingItems } from "../../utils/constants";
 import randomizeImage from '../../assets/randomize-logo.svg'
 import '../Main/Main.css'
 
-export default function Main({ weatherData, handleCardClick }){
+export default function Main({ weatherData, handleCardClick, handleCloseModal }){
   return (
     <>
       <main>
@@ -18,7 +18,7 @@ export default function Main({ weatherData, handleCardClick }){
             })
             .map((item, index) => {
               return (
-                <ItemCard key={index} item={item} onCardClick={handleCardClick}/>
+                <ItemCard key={index} item={item} onCardClick={handleCardClick} handleCloseModal={handleCloseModal}/>
               )
             })}
           </ul>
