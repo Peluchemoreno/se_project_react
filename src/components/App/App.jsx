@@ -13,6 +13,8 @@ function App() {
   useEffect(()=>{
     getWeather().then(data => {
       setWeatherData(data)
+    }).catch(err => {
+      console.error(err)
     })
   }, [])
   

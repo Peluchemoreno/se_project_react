@@ -8,11 +8,11 @@ export default function WeatherCard({weatherData}){
   return option.day === weatherData.isDay && option.condition === weatherData.weatherDescription
 })
 
-  const defaultWeatherOption = defaultWeatherOptions.find(option => {
-    return option.day === weatherData.isDay;
-  })
-
   if (filteredOption === undefined){
+    const defaultWeatherOption = defaultWeatherOptions.find(option => {
+      return option.day === weatherData.isDay;
+    })
+
     weatherOption = defaultWeatherOption
   } else {
     weatherOption = filteredOption

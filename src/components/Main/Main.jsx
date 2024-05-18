@@ -6,7 +6,6 @@ import '../Main/Main.css'
 
 export default function Main({ weatherData, handleCardClick, handleCloseModal }){
   return (
-    <>
       <main>
         <WeatherCard weatherData={weatherData}/>
         <section className="cards">
@@ -16,9 +15,9 @@ export default function Main({ weatherData, handleCardClick, handleCloseModal })
             .filter(item =>{
               return item.weather === weatherData.weather
             })
-            .map((item, index) => {
+            .map((item) => {
               return (
-                <ItemCard key={index} item={item} onCardClick={handleCardClick} handleCloseModal={handleCloseModal}/>
+                <ItemCard key={item._id} item={item} onCardClick={handleCardClick} handleCloseModal={handleCloseModal}/>
               )
             })}
           </ul>
@@ -30,6 +29,5 @@ export default function Main({ weatherData, handleCardClick, handleCloseModal })
           </button>
         </section>
       </main>
-    </>
   )
 }

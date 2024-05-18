@@ -1,26 +1,34 @@
 import { apiKey } from "./constants";
 import { coordinates } from "./constants";
 
+function getTemperature(temperature){
+  return Math.floor(temperature)
+}
+
+function convertToCelsius(temperature){
+  return Math.floor((temperature - 32) * (5/9))
+}
+
+function convertSecondsToMilliseconds(seconds){
+  return seconds * 1000
+}
+
+function isDay({sunrise, sunset}, currentTime){
+  return currentTime > convertSecondsToMilliseconds(sunrise) && currentTime < convertSecondsToMilliseconds(sunset)
+}
+
+function processServerResponse(res){
+  if (res.ok){
+    return res.json()
+  } else {
+    return Promise.reject(error => {
+      console.error(error)
+    })
+  }
+}
+
 export function getWeather(){
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${apiKey}`).then(res => res.ok ? res.json() : Promise.reject(error => {
-    console.error(error)
-  })).then(data => {
-    
-    function getTemperature(temperature){
-      return Math.floor(temperature)
-    }
-
-    function convertToCelsius(temperature){
-      return Math.floor((temperature - 32) * (5/9))
-    }
-
-    function convertSecondsToMilliseconds(seconds){
-      return seconds * 1000
-    }
-
-    function isDay({sunrise, sunset}, currentTime){
-      return currentTime > convertSecondsToMilliseconds(sunrise) && currentTime < convertSecondsToMilliseconds(sunset)
-    }
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${apiKey}`).then(processServerResponse).then(data => {
     
     const temperature = getTemperature(data.main.temp);
 
@@ -41,8 +49,10 @@ export function getWeather(){
     } else {
       weatherData['weather'] = 'cold'
     }
-    // console.log(weatherData)
+
     return weatherData
   })
 }
+
+
 
