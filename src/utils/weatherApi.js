@@ -1,6 +1,5 @@
 import { apiKey } from "./constants";
 import { coordinates } from "./constants";
-import { getGeoCoordinates } from "./constants";
 
 
 function getTemperature(temperature){
@@ -29,41 +28,41 @@ function processServerResponse(res){
   }
 }
 
-export function getWeather(){
-  return getGeoCoordinates().then(data => {
-    let latitude;
-    let longitude;
+function fetchCoordinates({latitude, longitude}){
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`).then(processServerResponse).then(data => {
+      
+  const temperature = getTemperature(data.main.temp);
 
-    latitude = data.coords.latitude;
-    longitude = data.coords.longitude;
+  const weatherData = {
+    cityName: data.name,
+    currentTemp: {
+      F: temperature,
+      C: convertToCelsius(temperature)
+    },
+    weatherDescription: data.weather[0].main.toLowerCase(),
+    isDay: isDay(data.sys, Date.now()),
+  }
 
+  if (temperature > 86){
+    weatherData['weather'] = 'hot'
+  } else if (temperature >= 66 && temperature < 86){
+    weatherData['weather'] = 'warm'
+  } else {
+    weatherData['weather'] = 'cold'
+  }
 
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude || coordinates.latitude}&lon=${longitude || coordinates.longitude}&units=imperial&appid=${apiKey}`).then(processServerResponse).then(data => {
-    
-    const temperature = getTemperature(data.main.temp);
-
-    const weatherData = {
-      cityName: data.name,
-      currentTemp: {
-        F: temperature,
-        C: convertToCelsius(temperature)
-      },
-      weatherDescription: data.weather[0].main.toLowerCase(),
-      isDay: isDay(data.sys, Date.now()),
-    }
-
-    if (temperature > 86){
-      weatherData['weather'] = 'hot'
-    } else if (temperature >= 66 && temperature < 86){
-      weatherData['weather'] = 'warm'
-    } else {
-      weatherData['weather'] = 'cold'
-    }
-
-    return weatherData
-  })
+  return weatherData
 })
 }
+
+export function getWeather(){
+ return fetchCoordinates(coordinates)
+}
+
+export function getGeoLocationWeather(success){
+  return fetchCoordinates(success.coords)
+}
+
 
 
 

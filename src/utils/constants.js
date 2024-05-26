@@ -62,11 +62,6 @@ export let coordinates = staticCoordinates;
 /*                                       test area                                      */
 /* ------------------------------------------------------------------------------------ */
 
-export function getGeoCoordinates(){
-  return new Promise((res, rej) => {
-    navigator.geolocation.getCurrentPosition(res, rej)
-  })
-}
 
 
 /* ------------------------------------------------------------------------------------ */

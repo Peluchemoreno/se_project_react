@@ -6,15 +6,26 @@ import Footer from '../Footer/Footer.jsx'
 import ModalWithForm from '../ModalWithForm/ModalWithForm.jsx'
 import ItemModal from '../ItemModal/ItemModal.jsx'
 import { getWeather } from '../../utils/weatherApi.js'
+import { getGeoLocationWeather } from '../../utils/weatherApi.js'
 
 
 function App() {
 
+
+
   useEffect(()=>{
-    getWeather().then(data => {
-      setWeatherData(data)
-    }).catch(err => {
-      console.error(err)
+    navigator.geolocation.getCurrentPosition((success)=>{
+      getGeoLocationWeather(success).then(data => {
+        setWeatherData(data)
+      }).catch(err => {
+        console.error(err)
+      })
+    },()=>{
+      getWeather().then(data => {
+        setWeatherData(data)
+      }).catch(err => {
+        console.error(err)
+      })
     })
   }, [])
   
