@@ -1,5 +1,7 @@
 import { apiKey } from "./constants";
 import { coordinates } from "./constants";
+import { getGeoCoordinates } from "./constants";
+
 
 function getTemperature(temperature){
   return Math.floor(temperature)
@@ -28,7 +30,15 @@ function processServerResponse(res){
 }
 
 export function getWeather(){
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${apiKey}`).then(processServerResponse).then(data => {
+  return getGeoCoordinates().then(data => {
+    let latitude;
+    let longitude;
+
+    latitude = data.coords.latitude;
+    longitude = data.coords.longitude;
+
+
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude || coordinates.latitude}&lon=${longitude || coordinates.longitude}&units=imperial&appid=${apiKey}`).then(processServerResponse).then(data => {
     
     const temperature = getTemperature(data.main.temp);
 
@@ -52,6 +62,7 @@ export function getWeather(){
 
     return weatherData
   })
+})
 }
 
 
