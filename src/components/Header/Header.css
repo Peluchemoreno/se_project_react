@@ -5,7 +5,13 @@
   margin-bottom: 28px;
 }
 
-.header__logo {
+.header__link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.header__logo-link {
   margin-right: 24px;
 }
 
@@ -25,7 +31,7 @@
 }
 
 .header__add-clothes-button {
-  margin-left: auto;
+  margin-left: 20px;
   border: none;
   color: black;
   background-color: #f3f3f3;
@@ -34,6 +40,7 @@
   line-height: 24px;
   height: 24px;
   cursor: pointer;
+  padding-left: 0;
 }
 
 .header__date-and-location {
@@ -56,7 +63,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 707px) {
+@media screen and (max-width: 800px) {
   .header {
     display: flex;
     flex-direction: column;
