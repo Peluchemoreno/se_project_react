@@ -15,7 +15,7 @@ export default function Header({onAddGarmentClick, handleMobileMenuClick, curren
 
   return (
     <header className='header'>
-      <Link className='header__logo-link' to="/se_project_react">
+      <Link className='header__logo-link' to="/">
         <img src={logo} alt="logo" className="header__logo" />
       </Link>
       <p className="header__date-and-location">{currentDate}, {weatherData.cityName}</p>

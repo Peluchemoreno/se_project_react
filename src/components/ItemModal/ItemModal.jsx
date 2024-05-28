@@ -1,5 +1,5 @@
 import "./ItemModal.css"
-// import "../ModalWithForm/ModalWithForm.css"
+
 export default function ItemModal({activeModal, card, handleCloseModal}){
   return (
     <div className={`modal ${activeModal === 'preview' && 'modal_visible'}`}>

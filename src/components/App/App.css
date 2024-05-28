@@ -19,6 +19,18 @@
 }
 
 @media screen and (max-width: 707px) {
+
+  html {
+    background-color: #F3F3F3;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100%;
+  }
+
   .app__content {
     box-sizing: border-box;
     height: 100dvh;
@@ -27,11 +39,6 @@
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 18px;
-  }
-
-  .app {
-    height: auto;
-    padding: 0;
   }
 }
 

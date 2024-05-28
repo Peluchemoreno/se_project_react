@@ -17,9 +17,9 @@ export default function Main({ weatherData, handleCardClick, handleCloseModal })
           <p className="cards__text">Today is {currentTemperatureContext.currentTemperatureUnit === "F" ? weatherData.currentTemp.F : weatherData.currentTemp.C} &deg; {currentTemperatureContext.currentTemperatureUnit === "F" ? "F" : "C"} You may want to wear:</p>
           <ul className="cards__list">
             {defaultClothingItems
-            // .filter(item =>{
-            //   return item.weather === weatherData.weather
-            // })
+            .filter(item =>{
+              return item.weather === weatherData.weather
+            })
             .map((item) => {
               return (
                 <ItemCard key={item._id} item={item} onCardClick={handleCardClick} handleCloseModal={handleCloseModal}/>

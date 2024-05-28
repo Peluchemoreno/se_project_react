@@ -1,4 +1,4 @@
-import './Sidebar.css'
+import './SideBar.css'
 import profilePicture from '../../assets/profile-pic.png'
 
 export default function Sidebar(){

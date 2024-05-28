@@ -1,12 +1,12 @@
 import './Profile.css'
-import Sidebar from '../Sidebar/Sidebar'
+import SideBar from '../SideBar/SideBar'
 import ClothesSection from '../ClothesSection/ClothesSection'
 
-export default function Profile({weatherData, handleCardClick, handleCloseModal, handleCloseMobileModal, activeModal}){
+export default function Profile({handleCardClick, onAddGarmentClick}){
   return (
     <div className="profile">
-      <Sidebar></Sidebar>
-      <ClothesSection weatherData={weatherData} handleCardClick={handleCardClick} handleCloseModal={handleCloseModal} handleCloseMobileModal={handleCloseMobileModal} activeModal={activeModal}></ClothesSection>
+      <SideBar></SideBar>
+      <ClothesSection handleCardClick={handleCardClick} onAddGarmentClick={onAddGarmentClick}/>
     </div>
   )
 }
