@@ -75,7 +75,7 @@ function App() {
     setMobileModal('')
   }
 
-  function handleTemperatureSwitchToggle(){
+  function handleToggleSwitchChange(){
     currentTemperatureUnit === 'F' ? setCurrentTemperatureUnit('C') : setCurrentTemperatureUnit('F')
   }
 
@@ -103,7 +103,7 @@ function App() {
   return (
     <>
       <div className='app'>
-        <CurrentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleTemperatureSwitchToggle}}>
+        <CurrentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleToggleSwitchChange}}>
           <div className="app__content">
             <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal} weatherData={weatherData}/>
             <Routes>
