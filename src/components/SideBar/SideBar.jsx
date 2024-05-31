@@ -1,7 +1,7 @@
 import './SideBar.css'
 import profilePicture from '../../assets/profile-pic.png'
 
-export default function Sidebar(){
+export default function SideBar(){
   return (
     <aside className='sidebar'>
       <div className="sidebar__profile-element">
