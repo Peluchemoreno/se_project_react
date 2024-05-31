@@ -1,3 +1,5 @@
+
+
 .card {
   list-style-type: none;
   position: relative;
@@ -50,10 +52,18 @@
   display: none;
 }
 
+.cards {
+  padding-bottom: 85px;
+}
+
 @media screen and (max-width: 707px) {
   .cards__list {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .cards {
+    padding-bottom: 0;
   }
 
   .card {
@@ -90,6 +100,7 @@
     border-radius: 4px;
     margin-top: 20px;
     height: 44px;
+    margin-bottom: 84px;
   }
 
   .randomize__text {

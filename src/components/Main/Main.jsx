@@ -1,12 +1,11 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 import randomizeImage from '../../assets/randomize-logo.svg'
 import '../Main/Main.css'
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
-export default function Main({ weatherData, handleCardClick, handleCloseModal }){
+export default function Main({clothingItems, weatherData, handleCardClick, handleCloseModal }){
 
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext)
 
@@ -16,7 +15,7 @@ export default function Main({ weatherData, handleCardClick, handleCloseModal })
         <section className="cards">
           <p className="cards__text">Today is {currentTemperatureContext.currentTemperatureUnit === "F" ? weatherData.currentTemp.F : weatherData.currentTemp.C} &deg; {currentTemperatureContext.currentTemperatureUnit === "F" ? "F" : "C"} You may want to wear:</p>
           <ul className="cards__list">
-            {defaultClothingItems
+            {clothingItems
             .filter(item =>{
               return item.weather === weatherData.weather
             })

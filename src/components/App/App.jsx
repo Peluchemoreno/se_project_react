@@ -10,9 +10,21 @@ import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnit
 import { Routes, Route } from 'react-router-dom'
 import Profile from '../Profile/Profile.jsx'
 import AddItemModal from '../AddItemModal/AddItemModal.jsx'
-
+import Api from '../../utils/api.js'
 
 function App() {
+
+  const api = new Api('http://localhost:3001/');
+  const [clothingItems, setClothingItems] = useState([])
+
+  useEffect(()=>{
+    api.fetchData().then(data => {
+      setClothingItems(data)
+    }).catch(error => {
+      console.error(error)
+    })
+  }, [])
+
 
   const [weatherData, setWeatherData] = useState({
     weather: ``,
@@ -40,7 +52,7 @@ function App() {
     })
   }, [])
   
- 
+
 
   const [activeModal, setActiveModal] = useState('')
 
@@ -68,9 +80,20 @@ function App() {
   }
 
   function onAddItem(clothingData){
-    console.log(clothingData)
+    api.addGarment(clothingData).then(item => {
+      setClothingItems([item, ...clothingItems])
+    })
   }
-
+  function handleDeleteClick(cardId){
+    api.deleteGarment(cardId).then(()=>{
+      const newFilteredArray = clothingItems.filter(item => {
+        return item._id !== cardId._id
+      })
+      setClothingItems(newFilteredArray)
+    }).then(()=>{
+      closeModal()
+    })
+  }
 
 
   return (
@@ -80,14 +103,14 @@ function App() {
           <div className="app__content">
             <Header onAddGarmentClick={setActiveModal} handleMobileMenuClick={setMobileModal} currentActiveMobileModal={activeMobileModal} handleCloseModal={closeMobileModal} weatherData={weatherData}/>
             <Routes>
-              <Route path='/' element={<Main weatherData={weatherData} handleCardClick={handleCardClick} handleCloseModal={closeMobileModal}/>}></Route>
-              <Route path='/profile' element={<Profile handleCardClick={handleCardClick} onAddGarmentClick={setActiveModal}/>}></Route>
+              <Route path='/' element={<Main clothingItems={clothingItems} weatherData={weatherData} handleCardClick={handleCardClick} handleCloseModal={closeMobileModal}/>}></Route>
+              <Route path='/profile' element={<Profile clothingItems={clothingItems} handleCardClick={handleCardClick} onAddGarmentClick={setActiveModal}/>}></Route>
             </Routes>
             
             <Footer />
           </div>
           <AddItemModal activeModal={activeModal} closeModal={closeModal} closeMobileModal={closeMobileModal} onAddItem={onAddItem}/>
-          <ItemModal activeModal={activeModal} card={selectedCard} handleCloseModal={closeModal}/>
+          <ItemModal activeModal={activeModal} card={selectedCard} handleCloseModal={closeModal} handleDeleteClick={handleDeleteClick}/>
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </>

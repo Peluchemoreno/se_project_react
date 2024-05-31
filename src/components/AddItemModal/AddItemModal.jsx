@@ -1,18 +1,15 @@
 import './AddItemModal.css'
 import "../ModalWithForm/ModalWithForm.css"
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-export default function AddItemModal({isOpen, onAddItem, activeModal, closeModal, closeMobileModal}){
+export default function AddItemModal({onAddItem, activeModal, closeModal, closeMobileModal}){
 
   //declare state for each input field
   const [name, setName] = useState('')
-  const [image, setImage] = useState('')
-  const [weatherType, setWeatherType] = useState('')
+  const [imageUrl, setImage] = useState('')
+  const [weather, setWeatherType] = useState('')
 
-  useEffect(()=>{
-    // clear the form upon opening the component rendering
-  }, [])
 
   function handleNameChange(e){
     setName(e.target.value)
@@ -28,7 +25,8 @@ export default function AddItemModal({isOpen, onAddItem, activeModal, closeModal
 
   function handleSubmit(e){
     e.preventDefault()
-    onAddItem({name, image, weatherType})
+    onAddItem({name, imageUrl, weather})
+    e.target.reset()
     closeModal()
   }
 

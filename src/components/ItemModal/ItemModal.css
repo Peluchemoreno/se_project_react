@@ -26,6 +26,7 @@
 
 .modal__content-details {
   padding-left: 32px;
+  position: relative;
 }
 
 .modal__content-title {
@@ -45,6 +46,20 @@
   margin-bottom: 32px;
 }
 
+.modal__content-delete-button {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0;
+  color: #FF4D00;
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 707px){
   .modal__content_type_preview {
    max-width: 343px;
@@ -53,5 +68,9 @@
   .modal__close-button {
     top: 12px;
     right: 12px; 
+  }
+
+  .modal__content-delete-button {
+    right: 25px;
   }
 }
