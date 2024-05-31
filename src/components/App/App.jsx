@@ -82,6 +82,8 @@ function App() {
   function onAddItem(clothingData){
     api.addGarment(clothingData).then(item => {
       setClothingItems([item, ...clothingItems])
+    }).catch(err => {
+      console.error(err)
     })
   }
   function handleDeleteClick(cardId){
@@ -92,6 +94,8 @@ function App() {
       setClothingItems(newFilteredArray)
     }).then(()=>{
       closeModal()
+    }).catch(err => {
+      console.error(err)
     })
   }
 
