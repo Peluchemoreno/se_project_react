@@ -1,9 +1,7 @@
-
-
 .card {
   list-style-type: none;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   height: 326px;
   width: 323px;
   background-color: #e9e9e9;
@@ -18,7 +16,7 @@
   position: absolute;
   top: 15px;
   display: flex;
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
   font-size: 16px;
   padding: 2px 12px;
   background-color: #fff;
@@ -78,10 +76,9 @@
     height: 164px;
   }
 
-  .cards__text{
+  .cards__text {
     font-size: 20px;
     font-weight: 700;
- 
   }
 
   .card__title {
@@ -91,7 +88,7 @@
   .randomize {
     display: block;
   }
-  
+
   .randomize__button {
     background-color: black;
     color: white;

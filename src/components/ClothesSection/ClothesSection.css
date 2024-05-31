@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.clothes-section__title{
+.clothes-section__title {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
@@ -12,7 +12,7 @@
   margin-right: 20px;
 }
 
-.clothes-section__header{
+.clothes-section__header {
   display: flex;
   /* border: 1px solid black; */
   padding-bottom: 16px;
@@ -25,12 +25,12 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 25px;
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
   padding: 0;
   cursor: pointer;
 }
 
-.clothes-section__clothes{
+.clothes-section__clothes {
   list-style-type: none;
 }
 

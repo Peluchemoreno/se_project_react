@@ -1,5 +1,5 @@
 .modal {
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,12 +10,12 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+  transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .modal_visible {
   display: flex;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@
   align-items: center;
   visibility: visible;
   opacity: 1;
-  transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+  transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .modal__content {
@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   max-width: 436px;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   max-width: 496px;
   width: 100%;
@@ -47,7 +47,7 @@
   flex-direction: column;
   padding: 0 28px;
   max-width: 436px;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   max-width: 496px;
   width: 100%;
@@ -104,11 +104,11 @@
   background-color: black;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .form__submit-button:hover {
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .form__submit-button_disabled {
@@ -121,15 +121,15 @@
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color .2s ease-in-out;
-  background-color: rgba(0, 0, 0, .3);
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.form__weather-select-option{
+.form__weather-select-option {
   margin-bottom: 8px;
 }
 
-.form__weather-select-option:last-of-type{
+.form__weather-select-option:last-of-type {
   margin-bottom: 0;
 }
 
@@ -145,7 +145,7 @@
   right: 28px;
   top: 20px;
   cursor: pointer;
-  background-image: url('../../assets/close-button.svg');
+  background-image: url("../../assets/close-button.svg");
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -169,11 +169,11 @@
 
   .form__close-button {
     top: 20px;
-    right: 20px;        
-  } 
+    right: 20px;
+  }
 
-  .modal{
-    padding-left :20px;
-    padding-right :20px;
+  .modal {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

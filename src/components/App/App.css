@@ -1,6 +1,6 @@
 .app {
-  background-color: #F3F3F3;
-  font-family: 'Cabinet';
+  background-color: #f3f3f3;
+  font-family: "Cabinet";
   box-sizing: border-box;
   height: 100%;
   padding: 0px 40px;
@@ -18,9 +18,8 @@
 }
 
 @media screen and (max-width: 707px) {
-
   html {
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
   }
 
   .app {
@@ -40,4 +39,3 @@
     padding-top: 18px;
   }
 }
-
