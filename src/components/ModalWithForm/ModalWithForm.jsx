@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./ModalWithForm.css";
+import IsLoggedInContext from "../../contexts/IsLoggedInContext/IsLoggedInContext";
 
 export default function ModalWithForm({
   children,
@@ -8,10 +10,11 @@ export default function ModalWithForm({
   handleCloseModal,
   handleSubmit,
 }) {
+
+  console.log(activeModal)
+  // currently upon clicking the button to open a modal, both modals open, the one for signing up and the one for adding a new clothing item NEED TO FIX
   return (
-    <div
-      className={`modal ${activeModal === "add-garment" && "modal_visible" /*chandging add-garment to the specified activeModal makes it visible*/}`}
-    >
+    <div className={`modal ${activeModal === 'add-garment' && "modal_visible"}`}>
       <form onSubmit={handleSubmit} className="form">
         <button
           onClick={handleCloseModal}

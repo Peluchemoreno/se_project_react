@@ -44,6 +44,7 @@ export default function AddItemModal({
       handleCloseMobileModal={closeMobileModal}
       handleSubmit={handleSubmit}
     >
+      
       <label htmlFor="name" className="form__label">
         <p className="form__label-text form__label-text_name">Name</p>
         <input

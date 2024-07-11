@@ -12,7 +12,7 @@ export default function Main({
   handleCloseModal,
 }) {
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext);
-  console.log(clothingItems)
+  // console.log(clothingItems)
 
   return (
     <main>

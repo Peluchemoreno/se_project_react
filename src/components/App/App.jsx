@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Api from "../../utils/api.js";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import IsLoggedInContext from "../../contexts/IsLoggedInContext/IsLoggedInContext.js";
 
 function App() {
   const api = new Api("http://localhost:4000/");
@@ -68,7 +69,7 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   function handleCardClick(card) {
     setActiveModal("preview");
@@ -85,10 +86,6 @@ function App() {
 
   function handleToggleSwitchChange() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
-  }
-
-  function handleSignUpClick(){
-    setActiveModal("sign-up")
   }
 
   function onAddItem(clothingData, onDone) {
@@ -124,55 +121,60 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <div className="app__content">
-          <Header
-            onAddGarmentClick={setActiveModal}
-            handleMobileMenuClick={setMobileModal}
-            currentActiveMobileModal={activeMobileModal}
-            handleCloseModal={closeMobileModal}
-            weatherData={weatherData}
-            isLoggedIn={isLoggedIn}
-            handleSignUpClick={handleSignUpClick}
-          />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  clothingItems={clothingItems}
-                  weatherData={weatherData}
-                  handleCardClick={handleCardClick}
-                  handleCloseModal={closeMobileModal}
-                />
-              }
-            ></Route>
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                  onAddGarmentClick={setActiveModal}
-                />
-              }
-            ></Route>
-          </Routes>
+        <IsLoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+          <div className="app__content">
+            <Header
+              onAddGarmentClick={setActiveModal}
+              handleMobileMenuClick={setMobileModal}
+              currentActiveMobileModal={activeMobileModal}
+              handleCloseModal={closeMobileModal}
+              weatherData={weatherData}
+              isLoggedIn={isLoggedIn}
+              onSignUpClick={setActiveModal}
+            />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    clothingItems={clothingItems}
+                    weatherData={weatherData}
+                    handleCardClick={handleCardClick}
+                    handleCloseModal={closeMobileModal}
+                  />
+                }
+              ></Route>
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    onAddGarmentClick={setActiveModal}
+                  />
+                }
+              ></Route>
+            </Routes>
 
-          <Footer />
-        </div>
-        <AddItemModal
-          activeModal={activeModal}
-          closeModal={closeModal}
-          closeMobileModal={closeMobileModal}
-          onAddItem={onAddItem}
-        />
-        <ItemModal
-          activeModal={activeModal}
-          card={selectedCard}
-          handleCloseModal={closeModal}
-          handleDeleteClick={handleDeleteClick}
-        />
-        <RegisterModal activeModal={activeModal} handleCloseModal={closeModal} />
+            <Footer />
+          </div>
+          <AddItemModal
+            activeModal={activeModal}
+            closeModal={closeModal}
+            closeMobileModal={closeMobileModal}
+            onAddItem={onAddItem}
+          />
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            handleCloseModal={closeModal}
+            handleDeleteClick={handleDeleteClick}
+          />
+          <RegisterModal
+            activeModal={activeModal}
+            handleCloseModal={closeModal}
+          />
+        </IsLoggedInContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

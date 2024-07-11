@@ -11,7 +11,7 @@ export default function Header({
   handleCloseModal,
   weatherData,
   isLoggedIn,
-  handleSignUpClick
+  onSignUpClick,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -19,10 +19,16 @@ export default function Header({
   });
 
   function handleAddClothesButtonClick() {
+    console.log('add garment')
     onAddGarmentClick("add-garment");
     handleCloseModal();
   }
   
+  function handleSignUpClick(){
+    console.log('sign up')
+    onSignUpClick('sign-up')
+    handleCloseModal();
+  }
 
   return (
     <header className="header">
