@@ -163,6 +163,7 @@ function App() {
             closeModal={closeModal}
             closeMobileModal={closeMobileModal}
             onAddItem={onAddItem}
+            isLoggedIn={isLoggedIn}
           />
           <ItemModal
             activeModal={activeModal}
@@ -173,6 +174,7 @@ function App() {
           <RegisterModal
             activeModal={activeModal}
             handleCloseModal={closeModal}
+            isLoggedIn={isLoggedIn}
           />
         </IsLoggedInContext.Provider>
       </CurrentTemperatureUnitContext.Provider>

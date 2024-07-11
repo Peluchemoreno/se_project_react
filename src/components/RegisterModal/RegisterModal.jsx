@@ -12,6 +12,8 @@ export default function RegisterModal({
 
   function handleSubmit(e){
     e.preventDefault();
+    console.log('submitting sign up' + " " + email)
+    setEmail('')
   }
 
   function handleEmailChange(e){

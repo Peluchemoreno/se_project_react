@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import "./ModalWithForm.css";
-import IsLoggedInContext from "../../contexts/IsLoggedInContext/IsLoggedInContext";
 
 export default function ModalWithForm({
   children,
