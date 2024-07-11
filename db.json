@@ -101,6 +101,12 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "T-Shirt",
+      "imageUrl": "https://ninesquared.team/wp-content/uploads/2023/05/ninesquared-tshirt-black-bk-M.jpg",
+      "weather": "hot",
+      "_id": 17
     }
   ]
 }
