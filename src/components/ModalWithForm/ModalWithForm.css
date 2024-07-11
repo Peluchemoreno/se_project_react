@@ -13,6 +13,11 @@
   transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
+
+.modal__closed {
+  visibility: hidden;
+}
+
 .modal_visible {
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
@@ -29,7 +34,6 @@
   transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
-
 .modal__content {
   background-color: #fff;
   display: flex;
@@ -41,6 +45,19 @@
   width: 100%;
   position: relative;
 }
+
+.modal__button_log-in {
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .5);
+  padding: 0;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+
 
 .form {
   background-color: #fff;
@@ -108,7 +125,8 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.form__submit-button:hover {
+
+.form__submit-button:not(:disabled):hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -121,7 +139,7 @@
   font-weight: 700;
   color: #fff;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: auto;
   transition: background-color 0.2s ease-in-out;
   background-color: rgba(0, 0, 0, 0.3);
 }

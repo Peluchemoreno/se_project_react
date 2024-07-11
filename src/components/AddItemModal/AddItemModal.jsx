@@ -8,10 +8,12 @@ export default function AddItemModal({
   activeModal,
   closeModal,
   closeMobileModal,
+  isOpen
 }) {
   const [name, setName] = useState("");
   const [imageUrl, setImage] = useState("");
   const [weather, setWeatherType] = useState("");
+  const modalName = 'add-garment';
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -35,6 +37,10 @@ export default function AddItemModal({
     });
   }
 
+  function isButtonDisabled(){
+    return !name || !imageUrl || !weather
+  }
+
   return (
     <ModalWithForm
       title="New garment"
@@ -43,6 +49,10 @@ export default function AddItemModal({
       handleCloseModal={closeModal}
       handleCloseMobileModal={closeMobileModal}
       handleSubmit={handleSubmit}
+      modalName={modalName}
+      isOpen={isOpen}
+      alternateButton={false}
+      isButtonDisabled={isButtonDisabled()}
     >
       
       <label htmlFor="name" className="form__label">

@@ -12,6 +12,7 @@ export default function Header({
   weatherData,
   isLoggedIn,
   onSignUpClick,
+  onLogInClick,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -19,15 +20,16 @@ export default function Header({
   });
 
   function handleAddClothesButtonClick() {
-    console.log('add garment')
     onAddGarmentClick("add-garment");
     handleCloseModal();
   }
   
   function handleSignUpClick(){
-    console.log('sign up')
     onSignUpClick('sign-up')
-    handleCloseModal();
+  }
+
+  function handleLogInClick(){
+    onLogInClick('log-in')
   }
 
   return (
@@ -80,7 +82,7 @@ export default function Header({
          : 
         <>
           <button className="header__button" onClick={handleSignUpClick}>Sign Up</button>
-          <button className="header__button">Log In</button>
+          <button className="header__button" onClick={handleLogInClick}>Log In</button>
         
         </>}
       </div>

@@ -13,6 +13,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Api from "../../utils/api.js";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import IsLoggedInContext from "../../contexts/IsLoggedInContext/IsLoggedInContext.js";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 
 function App() {
   const api = new Api("http://localhost:4000/");
@@ -69,7 +70,7 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleCardClick(card) {
     setActiveModal("preview");
@@ -86,6 +87,22 @@ function App() {
 
   function handleToggleSwitchChange() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+  }
+
+  function navigateToLogin(){
+    console.log('navigate to log in form')
+  }
+
+  function handleLogin(){
+    console.log('handle log in logic')
+  }
+
+  function navigateToSignUp(){
+    console.log('navigate to sign up')
+  }
+
+  function handleSignUp(){
+    console.log('handle logic for sign up')
   }
 
   function onAddItem(clothingData, onDone) {
@@ -131,6 +148,7 @@ function App() {
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
               onSignUpClick={setActiveModal}
+              onLogInClick={setActiveModal}
             />
             <Routes>
               <Route
@@ -160,6 +178,7 @@ function App() {
           </div>
           <AddItemModal
             activeModal={activeModal}
+            isOpen={activeModal === "add-garment"}
             closeModal={closeModal}
             closeMobileModal={closeMobileModal}
             onAddItem={onAddItem}
@@ -175,6 +194,18 @@ function App() {
             activeModal={activeModal}
             handleCloseModal={closeModal}
             isLoggedIn={isLoggedIn}
+            isOpen={activeModal === 'sign-up'}
+            handleLogin={handleLogin}
+            navigateToLogin={navigateToLogin}
+          />
+          <LoginModal 
+          activeModal={activeModal}
+          handleCloseModal={closeModal}
+          isLoggedIn={isLoggedIn}
+          isOpen={activeModal === 'log-in'}
+          handleLogin={handleLogin}
+          closeModal={closeModal}
+          navigateToSignUp={navigateToSignUp}
           />
         </IsLoggedInContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
