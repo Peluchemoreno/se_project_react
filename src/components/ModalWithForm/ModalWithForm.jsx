@@ -10,7 +10,7 @@ export default function ModalWithForm({
 }) {
   return (
     <div
-      className={`modal ${activeModal === "add-garment" && "modal_visible"}`}
+      className={`modal ${activeModal === "add-garment" && "modal_visible" /*chandging add-garment to the specified activeModal makes it visible*/}`}
     >
       <form onSubmit={handleSubmit} className="form">
         <button

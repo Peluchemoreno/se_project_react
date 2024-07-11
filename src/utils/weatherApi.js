@@ -48,9 +48,9 @@ function fetchCoordinates({ latitude, longitude }) {
         isDay: isDay(data.sys, Date.now()),
       };
 
-      if (temperature > 86) {
+      if (temperature > 80) {
         weatherData["weather"] = "hot";
-      } else if (temperature >= 66 && temperature < 86) {
+      } else if (temperature >= 66 && temperature < 80) {
         weatherData["weather"] = "warm";
       } else {
         weatherData["weather"] = "cold";

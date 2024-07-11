@@ -2,6 +2,7 @@ import "./ItemCard.css";
 
 export default function ItemCard({ item, onCardClick }) {
   function handleCardClick() {
+    console.log(item)
     onCardClick(item);
   }
   return (

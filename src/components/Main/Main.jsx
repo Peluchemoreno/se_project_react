@@ -12,6 +12,7 @@ export default function Main({
   handleCloseModal,
 }) {
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext);
+  console.log(clothingItems)
 
   return (
     <main>
@@ -27,7 +28,7 @@ export default function Main({
           You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
+          {/* {clothingItems.data
             .filter((item) => {
               return item.weather === weatherData.weather;
             })
@@ -40,7 +41,7 @@ export default function Main({
                   handleCloseModal={handleCloseModal}
                 />
               );
-            })}
+            })} */}
         </ul>
       </section>
       <section className="randomize">

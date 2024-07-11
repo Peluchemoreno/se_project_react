@@ -11,9 +11,10 @@ import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Api from "../../utils/api.js";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 
 function App() {
-  const api = new Api("http://localhost:3001/");
+  const api = new Api("http://localhost:4000/");
   const [clothingItems, setClothingItems] = useState([]);
 
   useEffect(() => {
@@ -67,6 +68,8 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   function handleCardClick(card) {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -82,6 +85,10 @@ function App() {
 
   function handleToggleSwitchChange() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+  }
+
+  function handleSignUpClick(){
+    setActiveModal("sign-up")
   }
 
   function onAddItem(clothingData, onDone) {
@@ -124,6 +131,8 @@ function App() {
             currentActiveMobileModal={activeMobileModal}
             handleCloseModal={closeMobileModal}
             weatherData={weatherData}
+            isLoggedIn={isLoggedIn}
+            handleSignUpClick={handleSignUpClick}
           />
           <Routes>
             <Route
@@ -163,6 +172,7 @@ function App() {
           handleCloseModal={closeModal}
           handleDeleteClick={handleDeleteClick}
         />
+        <RegisterModal activeModal={activeModal} handleCloseModal={closeModal} />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

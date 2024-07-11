@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.header__button {
+  color: black;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .header__logo-link {
   margin-right: 24px;
 }

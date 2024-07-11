@@ -10,6 +10,8 @@ export default function Header({
   currentActiveMobileModal,
   handleCloseModal,
   weatherData,
+  isLoggedIn,
+  handleSignUpClick
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -20,6 +22,7 @@ export default function Header({
     onAddGarmentClick("add-garment");
     handleCloseModal();
   }
+  
 
   return (
     <header className="header">
@@ -49,11 +52,13 @@ export default function Header({
           onClick={handleCloseModal}
         ></button>
         <ToggleSwitch />
+        
+        {isLoggedIn ? 
+        <>
         <button
-          onClick={handleAddClothesButtonClick}
-          className="header__add-clothes-button"
-        >
-          + Add clothes
+        onClick={handleAddClothesButtonClick}
+        className="header__add-clothes-button">
+        + Add clothes
         </button>
         <Link className="header__link" to="/profile">
           <div className="header__profile">
@@ -65,6 +70,13 @@ export default function Header({
             />
           </div>
         </Link>
+        </>
+         : 
+        <>
+          <button className="header__button" onClick={handleSignUpClick}>Sign Up</button>
+          <button className="header__button">Log In</button>
+        
+        </>}
       </div>
     </header>
   );
