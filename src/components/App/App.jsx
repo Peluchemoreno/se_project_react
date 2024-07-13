@@ -37,7 +37,6 @@ function App() {
     api
       .fetchData()
       .then((clothingItems) => {
-        console.log(clothingItems)
         setClothingItems(clothingItems.data);
       })
       .catch((error) => {
@@ -86,6 +85,8 @@ function App() {
     }
     getUser(token)
     .then(user => {
+      console.log(user)
+      setIsLoggedIn(true)
       setCurrentUser(user)
     })
 

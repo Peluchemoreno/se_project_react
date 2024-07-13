@@ -12,8 +12,6 @@ export default function Main({
   handleCloseModal,
 }) {
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext);
-  console.log(clothingItems)
-
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
