@@ -21,11 +21,12 @@ export default class Api {
       });
   }
 
-  addGarment(garment) {
+  addGarment(garment, token) {
     return fetch(this.baseUrl + "items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         name: garment.name,
@@ -39,11 +40,12 @@ export default class Api {
       });
   }
 
-  deleteGarment(garment) {
+  deleteGarment(garment, token) {
     return fetch(this.baseUrl + `items/${garment._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
       },
     })
       .then(this.checkServerResponse)

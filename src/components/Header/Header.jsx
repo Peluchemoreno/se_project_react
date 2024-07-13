@@ -1,8 +1,9 @@
 import "./Header.css";
 import logo from "../../assets/wtwr-logo.svg";
-import profilePicture from "../../assets/profile-pic.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext";
+import { useContext } from "react";
 
 export default function Header({
   onAddGarmentClick,
@@ -14,6 +15,9 @@ export default function Header({
   onSignUpClick,
   onLogInClick,
 }) {
+
+  const currentUser = useContext(CurrentUserContext)
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -31,6 +35,8 @@ export default function Header({
   function handleLogInClick(){
     onLogInClick('log-in')
   }
+
+  // const defaultUserImage = currentUser.name[0].toUpperCase();
 
   return (
     <header className="header">
@@ -70,12 +76,12 @@ export default function Header({
         </button>
         <Link className="header__link" to="/profile">
           <div className="header__profile">
-            <p className="header__profile_name">Justin McDonald</p>
-            <img
-              src={profilePicture}
+            <p className="header__profile_name">{currentUser.name}</p>
+            {!currentUser.avatar ? <div className="header__profile_image-default">{currentUser.name}</div> : <img
+              src={currentUser.avatar}
               alt="profile picture"
               className="header__profile_image"
-            />
+            />}
           </div>
         </Link>
         </>

@@ -7,7 +7,7 @@ export default function RegisterModal({
   handleCloseModal,
   closeMobileModal,
   isOpen,
-  handleLogin,
+  handleSignUp,
   navigateToLogin
 }) {
 
@@ -26,6 +26,7 @@ export default function RegisterModal({
   function handleSubmit(e){
     e.preventDefault();
     resetInputs()
+    handleSignUp(email, password, name, url);
   }
 
   function handleEmailChange(e){
@@ -59,7 +60,6 @@ export default function RegisterModal({
       isOpen={isOpen}
       alternateButton={true}
       alternateButtonText="or Log In"
-      handleLogin={handleLogin}
       isButtonDisabled={isButtonDisabled()}
       navigateToLogin={navigateToLogin}
     >

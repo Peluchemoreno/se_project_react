@@ -6,8 +6,8 @@ export default function LoginModal({
   activeModal,
   handleCloseModal,
   isOpen,
-  closeModal,
-  navigateToSignUp
+  navigateToSignUp,
+  handleLogin
 }){
 
   const [email, setEmail] = useState('')
@@ -33,7 +33,7 @@ export default function LoginModal({
   function handleSubmit(e){
     e.preventDefault();
     resetInputs()
-    closeModal()
+    handleLogin(email, password)
   }
 
   return (
