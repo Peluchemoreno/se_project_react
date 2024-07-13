@@ -13,6 +13,7 @@ export default function ItemModal({
 
   const isOwn = card.owner === currentUser._id;
 
+
   const itemDeleteButtonClass = (`modal__content-delete-button ${isOwn ? `modal__content-delete-button` : `modal__content-delete-button_hidden`}`)
 
   return (

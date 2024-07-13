@@ -7,11 +7,13 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   onAddGarmentClick,
+  signout,
+  onChangeProfileClick
 }) {
 
   return (
     <div className="profile">
-      <SideBar></SideBar>
+      <SideBar signout={signout} onChangeProfileClick={onChangeProfileClick}></SideBar>
       <ClothesSection
         clothingItems={clothingItems}
         handleCardClick={handleCardClick}

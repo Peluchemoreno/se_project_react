@@ -17,6 +17,7 @@ import LoginModal from "../LoginModal/LoginModal.jsx";
 import { register, signin, getUser } from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const api = new Api("http://localhost:4000/");
@@ -128,6 +129,12 @@ function App() {
     })
   }
 
+  function signout(){
+    localStorage.clear()
+    setCurrentUser({})
+    setIsLoggedIn(false)
+  }
+
   function navigateToSignUp(){
     setActiveModal('sign-up')
   }
@@ -207,6 +214,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       onAddGarmentClick={setActiveModal}
+                      onChangeProfileClick={setActiveModal}
+                      signout={signout}
                       />
                   </ProtectedRoute>
                 }
@@ -245,6 +254,12 @@ function App() {
           handleLogin={handleLogin}
           closeModal={closeModal}
           navigateToSignUp={navigateToSignUp}
+          />
+          <EditProfileModal 
+          activeModal={activeModal}
+          handleCloseModal={closeModal}
+          closeModal={closeModal}
+          isOpen={activeModal === "edit-profile"}
           />
           </CurrentUserContext.Provider>
         </IsLoggedInContext.Provider>
