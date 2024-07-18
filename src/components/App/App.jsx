@@ -21,7 +21,9 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const api = new Api("http://localhost:4000/");
+
   const [clothingItems, setClothingItems] = useState([]);
+
   const [activeModal, setActiveModal] = useState("");
 
   const [activeMobileModal, setMobileModal] = useState("");
@@ -86,7 +88,6 @@ function App() {
     }
     getUser(token)
     .then(user => {
-      console.log(user)
       setIsLoggedIn(true)
       setCurrentUser(user)
     })
@@ -146,6 +147,15 @@ function App() {
     })
   }
 
+  function handleUpdateProfile(name, avatar){
+    const token = localStorage.getItem('jwt')
+    api.updateProfile(name, avatar, token)
+    .then(user => {
+      setCurrentUser(user)
+      closeModal()
+    })
+  }
+
   function onAddItem(clothingData, onDone) {
     const token = localStorage.getItem('jwt')
     api
@@ -176,6 +186,28 @@ function App() {
       });
   }
 
+  function handleCardLike({_id, likes}) {
+    const token = localStorage.getItem('jwt');
+
+    likes.length < 1 ? api.likeCard(_id, token).then(updatedCard => {
+      setClothingItems((clothingItems) => {
+        clothingItems?.map((item) => {
+          item._id === _id ? updatedCard : item
+        })
+      }).catch(err => {
+        console.error(err)
+      })
+    }) : api.dislikeCard(_id, token).then(updatedCard => {
+      setClothingItems((clothingItems) => {
+        clothingItems?.map((item)=>{
+          item._id === _id ? updatedCard : item
+        })
+      }).catch(err => {
+        console.error(err)
+      })
+    })
+  }
+
   return (
     <div className="app">
       <CurrentTemperatureUnitContext.Provider
@@ -203,6 +235,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     handleCloseModal={closeMobileModal}
+                    onCardLike={handleCardLike}
                   />
                 }
               ></Route>
@@ -260,6 +293,7 @@ function App() {
           handleCloseModal={closeModal}
           closeModal={closeModal}
           isOpen={activeModal === "edit-profile"}
+          handleUpdateProfile={handleUpdateProfile}
           />
           </CurrentUserContext.Provider>
         </IsLoggedInContext.Provider>

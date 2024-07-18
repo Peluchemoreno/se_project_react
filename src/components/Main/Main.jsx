@@ -10,6 +10,7 @@ export default function Main({
   weatherData,
   handleCardClick,
   handleCloseModal,
+  onCardLike,
 }) {
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext);
   return (
@@ -37,6 +38,7 @@ export default function Main({
                   item={item}
                   onCardClick={handleCardClick}
                   handleCloseModal={handleCloseModal}
+                  onCardLike={onCardLike}
                 />
               );
             })}

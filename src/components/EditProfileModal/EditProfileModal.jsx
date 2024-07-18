@@ -6,13 +6,13 @@ import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserCon
 export default function EditProfileModal({
   closeModal,
   isOpen,
+  handleUpdateProfile
 }){
 
   const currentUser = useContext(CurrentUserContext)
   
-  const [name, setName] = useState(currentUser.name)
-  const [url, setAvatarUrl] = useState(currentUser.avatar)
-
+  const [name, setName] = useState('');
+  const [url, setAvatarUrl] = useState('')
 
 
   function isButtonDisabled(){
@@ -27,6 +27,11 @@ export default function EditProfileModal({
     setAvatarUrl(e.target.value)
   }
 
+  function handleSubmit(e){
+    e.preventDefault();
+    handleUpdateProfile(name, url);
+  }
+
   return (
     <ModalWithForm 
     title="Change profile data"
@@ -34,14 +39,15 @@ export default function EditProfileModal({
     isOpen={isOpen}
     isButtonDisabled={isButtonDisabled()}
     handleCloseModal={closeModal}
+    handleSubmit={handleSubmit}
     >
       <label htmlFor="name" className="form__label">
         <p className="form__label-text">Name *</p>
-        <input type="text" className="form__input" value={name} onChange={handleNameChange}/>
+        <input type="text" className="form__input" defaultValue={currentUser.name} value={name} onChange={handleNameChange}/>
       </label>
       <label htmlFor="avatar" className="form__label">
         <p className="form__label-text">Avatar *</p>
-        <input type="url" className="form__input" value={url} onChange={handleAvatarUrlChange}/>
+        <input type="url" className="form__input" defaultValue={currentUser.avatar} value={url} onChange={handleAvatarUrlChange}/>
       </label>
 
     </ModalWithForm>
