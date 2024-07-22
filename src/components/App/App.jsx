@@ -120,13 +120,14 @@ function App() {
   function handleLogin(email, password){
     signin(email, password)
     .then((data)=>{
-      console.log(data)
       getUser(data.token)
       .then((user)=>{
         setIsLoggedIn(true)
         setCurrentUser(user)
         closeModal()
       })
+    }).catch(err => {
+      console.error(err)
     })
   }
 
@@ -188,23 +189,39 @@ function App() {
 
   function handleCardLike({_id, likes}) {
     const token = localStorage.getItem('jwt');
-
     likes.length < 1 ? api.likeCard(_id, token).then(updatedCard => {
-      setClothingItems((clothingItems) => {
-        clothingItems?.map((item) => {
-          item._id === _id ? updatedCard : item
-        })
-      }).catch(err => {
-        console.error(err)
+      const filteredArray = []
+
+      clothingItems.forEach(item => {
+        if (item._id === _id){
+          filteredArray.push(updatedCard)
+        } else {
+          filteredArray.push(item)
+        }
       })
-    }) : api.dislikeCard(_id, token).then(updatedCard => {
-      setClothingItems((clothingItems) => {
-        clothingItems?.map((item)=>{
-          item._id === _id ? updatedCard : item
-        })
-      }).catch(err => {
-        console.error(err)
+
+      setClothingItems(filteredArray)
+    }
+  )
+    .catch(err => {
+      console.error(err)
+    })
+    : api.dislikeCard(_id, token).then(updatedCard => {
+      const filteredArray = []
+  
+      clothingItems.forEach(item => {
+        if (item._id === _id){
+          filteredArray.push(updatedCard)
+        } else {
+          filteredArray.push(item)
+        }
       })
+
+      setClothingItems(filteredArray)
+    }
+  )
+    .catch(err => {
+      console.error(err)
     })
   }
 
@@ -236,6 +253,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     handleCloseModal={closeMobileModal}
                     onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               ></Route>
@@ -249,6 +267,8 @@ function App() {
                       onAddGarmentClick={setActiveModal}
                       onChangeProfileClick={setActiveModal}
                       signout={signout}
+                      isLoggedIn={isLoggedIn}
+                      onCardLike={handleCardLike}
                       />
                   </ProtectedRoute>
                 }

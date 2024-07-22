@@ -11,6 +11,7 @@ export default function Main({
   handleCardClick,
   handleCloseModal,
   onCardLike,
+  isLoggedIn
 }) {
   const currentTemperatureContext = useContext(CurrentTemperatureUnitContext);
   return (
@@ -39,6 +40,7 @@ export default function Main({
                   onCardClick={handleCardClick}
                   handleCloseModal={handleCloseModal}
                   onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
                 />
               );
             })}

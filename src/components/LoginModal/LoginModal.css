@@ -1,0 +1,9 @@
+.form__label_error {
+  color: #FF4D00;
+}
+
+.form__input_error {
+  color: #FF4D00;
+  border-bottom-color: #FF4D00;
+}
+

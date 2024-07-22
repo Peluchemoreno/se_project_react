@@ -78,7 +78,7 @@ export default class Api {
       }
     }).then(this.checkServerResponse)
     .then(updatedCard => {
-      return updatedCard
+      return updatedCard.data
     })
   }
 
@@ -91,7 +91,7 @@ export default class Api {
       }
     }).then(this.checkServerResponse)
     .then(updatedCard => {
-      return updatedCard
+      return updatedCard.data
     })
   }
   
