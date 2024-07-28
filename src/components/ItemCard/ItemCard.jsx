@@ -16,7 +16,6 @@ export default function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) 
   
   function handleLike(e){
     e.stopPropagation();
-    // console.log(itemLikeButtonClassName)
     onCardLike(item)
   }
 

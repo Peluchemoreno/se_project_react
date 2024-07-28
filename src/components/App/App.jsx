@@ -188,7 +188,6 @@ function App() {
 
   function handleCardLike({_id, likes}) {
     const token = localStorage.getItem('jwt');
-    console.log(likes)
     !likes.includes(currentUser._id) ? api.likeCard(_id, token).then(updatedCard => {
       const filteredArray = []
       

@@ -1,6 +1,6 @@
 import "./EditProfileModal.css"
 import ModalWithForm from "../ModalWithForm/ModalWithForm"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext"
 
 export default function EditProfileModal({
@@ -11,8 +11,13 @@ export default function EditProfileModal({
 
   const currentUser = useContext(CurrentUserContext)
   
-  const [name, setName] = useState(currentUser?.name || '');
-  const [url, setAvatarUrl] = useState(currentUser?.avatar || '')
+  const [name, setName] = useState('');
+  const [url, setAvatarUrl] = useState('')
+
+  useEffect(()=>{
+    setName(currentUser.name || '');
+    setAvatarUrl(currentUser.avatar || '')
+  }, [isOpen])
 
 
   function isButtonDisabled(){
