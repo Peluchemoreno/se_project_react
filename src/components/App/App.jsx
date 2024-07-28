@@ -12,7 +12,6 @@ import Profile from "../Profile/Profile.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Api from "../../utils/api.js";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
-import IsLoggedInContext from "../../contexts/IsLoggedInContext/IsLoggedInContext.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import { register, signin, getUser } from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute.jsx";
@@ -189,9 +188,10 @@ function App() {
 
   function handleCardLike({_id, likes}) {
     const token = localStorage.getItem('jwt');
-    likes.length < 1 ? api.likeCard(_id, token).then(updatedCard => {
+    console.log(likes)
+    !likes.includes(currentUser._id) ? api.likeCard(_id, token).then(updatedCard => {
       const filteredArray = []
-
+      
       clothingItems.forEach(item => {
         if (item._id === _id){
           filteredArray.push(updatedCard)
@@ -199,14 +199,15 @@ function App() {
           filteredArray.push(item)
         }
       })
-
+      
       setClothingItems(filteredArray)
     }
   )
-    .catch(err => {
-      console.error(err)
-    })
-    : api.dislikeCard(_id, token).then(updatedCard => {
+  .catch(err => {
+    console.error(err)
+  })
+    :
+    api.dislikeCard(_id, token).then(updatedCard => {
       const filteredArray = []
   
       clothingItems.forEach(item => {
@@ -230,7 +231,6 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <IsLoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
           <CurrentUserContext.Provider value={currentUser}>
           <div className="app__content">
             <Header
@@ -260,7 +260,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
@@ -316,7 +316,6 @@ function App() {
           handleUpdateProfile={handleUpdateProfile}
           />
           </CurrentUserContext.Provider>
-        </IsLoggedInContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

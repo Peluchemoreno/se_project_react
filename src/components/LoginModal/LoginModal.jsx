@@ -53,9 +53,9 @@ export default function LoginModal({
         <p className="form__label-text">Email *</p>
         <input id='login-email' type="email" className="form__input" placeholder='Email' value={email} onChange={handleEmailChange}/>
       </label>
-      <label htmlFor="login-password" className='form__label form__label_error'>
+      <label htmlFor="login-password" className='form__label'>
         <p className="form__label-text">Password *</p>
-        <input id='login-password' type="password" className="form__input form__input_error" placeholder='Password' value={password} onChange={handlePasswordChange}/>
+        <input id='login-password' type="password" className="form__input" placeholder='Password' value={password} onChange={handlePasswordChange}/>
       </label>
     </ModalWithForm>
   )

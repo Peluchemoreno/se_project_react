@@ -18,4 +18,3 @@ The idea of the application is pretty simple - a call is made to a Weather API, 
 ## Plans for the future
 
 - Animate the weather cards
-- Determine location by using the Geolocation API that's built into the browser

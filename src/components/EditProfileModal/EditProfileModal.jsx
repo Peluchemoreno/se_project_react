@@ -11,8 +11,8 @@ export default function EditProfileModal({
 
   const currentUser = useContext(CurrentUserContext)
   
-  const [name, setName] = useState('');
-  const [url, setAvatarUrl] = useState('')
+  const [name, setName] = useState(currentUser?.name || '');
+  const [url, setAvatarUrl] = useState(currentUser?.avatar || '')
 
 
   function isButtonDisabled(){
