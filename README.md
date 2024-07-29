@@ -15,7 +15,10 @@ The idea of the application is pretty simple - a call is made to a Weather API, 
 - CSS3
 - OpenWeather API
 
+## Backend
+
+[Backend](https://github.com/Peluchemoreno/se_project_express)
+
 ## Plans for the future
 
 - Animate the weather cards
-- Determine location by using the Geolocation API that's built into the browser

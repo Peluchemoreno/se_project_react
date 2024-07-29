@@ -11,6 +11,12 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+
+.modal__closed {
+  visibility: hidden;
 }
 
 .modal_visible {
@@ -40,6 +46,20 @@
   width: 100%;
   position: relative;
 }
+
+.modal__button_alternate {
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .5);
+  padding: 0;
+  margin-left: 12px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+
 
 .form {
   background-color: #fff;
@@ -93,7 +113,7 @@
 
 .form__submit-button {
   border: none;
-  width: 124px;
+  width: 128px;
   height: 36px;
   margin-top: 32px;
   margin-bottom: 36px;
@@ -107,7 +127,8 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.form__submit-button:hover {
+
+.form__submit-button:not(:disabled):hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -120,7 +141,7 @@
   font-weight: 700;
   color: #fff;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: auto;
   transition: background-color 0.2s ease-in-out;
   background-color: rgba(0, 0, 0, 0.3);
 }

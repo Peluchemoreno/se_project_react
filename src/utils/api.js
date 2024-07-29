@@ -21,11 +21,12 @@ export default class Api {
       });
   }
 
-  addGarment(garment) {
+  addGarment(garment, token) {
     return fetch(this.baseUrl + "items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         name: garment.name,
@@ -39,11 +40,12 @@ export default class Api {
       });
   }
 
-  deleteGarment(garment) {
+  deleteGarment(garment, token) {
     return fetch(this.baseUrl + `items/${garment._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
       },
     })
       .then(this.checkServerResponse)
@@ -51,4 +53,46 @@ export default class Api {
         return data;
       });
   }
+
+  updateProfile(name, avatar, token){
+    return fetch(this.baseUrl + 'users/me', {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({name, avatar})
+    })
+    .then(this.checkServerResponse)
+    .then(user => {
+      return user
+    })
+  }
+
+  likeCard(id, token){
+    return fetch(this.baseUrl + `items/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      }
+    }).then(this.checkServerResponse)
+    .then(updatedCard => {
+      return updatedCard.data
+    })
+  }
+
+  dislikeCard(id, token){
+    return fetch(this.baseUrl + `items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      }
+    }).then(this.checkServerResponse)
+    .then(updatedCard => {
+      return updatedCard.data
+    })
+  }
+  
 }

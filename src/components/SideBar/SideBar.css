@@ -4,7 +4,14 @@
 
 .sidebar__profile-image {
   width: 56px;
+  height: 56px;
+  border-radius: 50%;
   margin-right: 16px;
+  object-fit: cover;
+}
+
+.sidebar__profile-image_default {
+  border: 1px solid red;
 }
 
 .sidebar__profile-name {
@@ -12,9 +19,27 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 25px;
+  /* margin-left: 16px; */
 }
 
 .sidebar__profile-element {
   display: flex;
   align-items: center;
+
+}
+
+.sidebar__navigation {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.sidebar__button {
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: left;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
