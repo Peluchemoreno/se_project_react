@@ -10,11 +10,16 @@
   object-fit: cover;
 }
 
+.sidebar__profile-image_default {
+  border: 1px solid red;
+}
+
 .sidebar__profile-name {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
   line-height: 25px;
+  /* margin-left: 16px; */
 }
 
 .sidebar__profile-element {

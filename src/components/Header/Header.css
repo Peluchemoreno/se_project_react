@@ -77,13 +77,27 @@
   border-radius: 50%;
   object-fit: cover;
 }
-
-.header__profile_image-default{
+.default-avatar__image{
   height: 40px;
   width: 40px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.default-avatar__image_sidebar{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
 }
 
 @media screen and (max-width: 800px) {

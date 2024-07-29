@@ -21,7 +21,7 @@ export default function EditProfileModal({
 
 
   function isButtonDisabled(){
-    return !name || !url
+    return !name
   }
 
   function handleNameChange(e){

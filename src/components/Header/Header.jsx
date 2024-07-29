@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/wtwr-logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext";
 import { useContext } from "react";
@@ -77,7 +78,11 @@ export default function Header({
         <Link className="header__link" to="/profile">
           <div className="header__profile">
             <p className="header__profile_name">{currentUser.name}</p>
-            {!currentUser.avatar ? <div className="header__profile_image-default">{currentUser.name}</div> : <img
+            {!currentUser.avatar ? 
+            <div className="default-avatar__image">
+              <DefaultAvatar />
+            </div> : 
+            <img
               src={currentUser.avatar}
               alt="profile picture"
               className="header__profile_image"

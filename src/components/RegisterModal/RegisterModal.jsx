@@ -46,7 +46,7 @@ export default function RegisterModal({
   }
 
   function isButtonDisabled(){
-    return !name || !url || !password || !email
+    return !name || !password || !email
   }
 
   return (
@@ -85,7 +85,7 @@ export default function RegisterModal({
       </label>
       <label htmlFor="url" className="form__label">
         <p className="form__label-text">Avatar URL *</p>
-        <input id="url" type="text" className="form__input" placeholder="Avatar URL" required value={url} onChange={handleAvatarUrlChange}/>
+        <input id="url" type="text" className="form__input" placeholder="Avatar URL" value={url} onChange={handleAvatarUrlChange}/>
       </label>
       
     </ModalWithForm>
