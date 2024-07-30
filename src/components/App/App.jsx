@@ -17,9 +17,9 @@ import { register, signin, getUser } from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+const api = new Api("http://localhost:4000/");
 
 function App() {
-  const api = new Api("http://localhost:4000/");
 
   const [clothingItems, setClothingItems] = useState([]);
 

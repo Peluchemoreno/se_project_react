@@ -14,9 +14,6 @@ export function register(email, password, name, avatar){
     // immediately sign the user in
     signin(email, password)
   })
-  .catch(err => {
-    console.error(err)
-  })
 }
 
 export function signin(email, password){
@@ -31,9 +28,6 @@ export function signin(email, password){
   .then(data => {
     localStorage.setItem('jwt', data.token)
     return data
-  })
-  .catch(err => {
-    console.error(err)
   })
 }
 
