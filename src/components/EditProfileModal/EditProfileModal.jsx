@@ -48,11 +48,11 @@ export default function EditProfileModal({
     >
       <label htmlFor="name" className="form__label">
         <p className="form__label-text">Name *</p>
-        <input type="text" className="form__input" defaultValue={currentUser.name} value={name} onChange={handleNameChange}/>
+        <input type="text" className="form__input" value={name} onChange={handleNameChange}/>
       </label>
       <label htmlFor="avatar" className="form__label">
         <p className="form__label-text">Avatar *</p>
-        <input type="url" className="form__input" defaultValue={currentUser.avatar} value={url} onChange={handleAvatarUrlChange}/>
+        <input type="url" className="form__input" value={url} onChange={handleAvatarUrlChange}/>
       </label>
 
     </ModalWithForm>

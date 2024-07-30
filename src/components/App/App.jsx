@@ -89,6 +89,8 @@ function App() {
     .then(user => {
       setIsLoggedIn(true)
       setCurrentUser(user)
+    }).catch((err) => {
+      console.error(err)
     })
 
   }, [])
@@ -144,6 +146,8 @@ function App() {
     register(email, password, name, url)
     .then(()=>{
       handleLogin(email, password)
+    }).catch((err)=>{
+      console.error(err)
     })
   }
 
@@ -153,6 +157,8 @@ function App() {
     .then(user => {
       setCurrentUser(user)
       closeModal()
+    }).catch((err)=>{
+      console.error(err)
     })
   }
 

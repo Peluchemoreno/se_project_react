@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
@@ -16,6 +16,10 @@ export default function RegisterModal({
   const [name, setName] = useState("")
   const [url, setAvatarUrl] = useState("")
 
+  useEffect(()=>{
+    resetInputs()
+  }, [isOpen])
+
   function resetInputs(){
     setEmail('')
     setPassword('')
@@ -25,7 +29,6 @@ export default function RegisterModal({
 
   function handleSubmit(e){
     e.preventDefault();
-    resetInputs()
     handleSignUp(email, password, name, url);
   }
 
@@ -61,7 +64,7 @@ export default function RegisterModal({
       alternateButton={true}
       alternateButtonText="or Log In"
       isButtonDisabled={isButtonDisabled()}
-      navigateToLogin={navigateToLogin}
+      alternateHandler={navigateToLogin}
     >
       <label htmlFor="email" className="form__label">
       <p className="form__label-text">Email *</p>
