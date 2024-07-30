@@ -1,6 +1,6 @@
 import './LoginModal.css'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function LoginModal({
   activeModal,
@@ -12,6 +12,10 @@ export default function LoginModal({
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  useEffect(()=>{
+    resetInputs()
+  }, [isOpen])
 
   function resetInputs(){
     setEmail('')
@@ -47,7 +51,7 @@ export default function LoginModal({
       handleCloseModal={handleCloseModal}
       isButtonDisabled={isButtonDisabled()}
       handleSubmit={handleSubmit}
-      navigateToSignUp={navigateToSignUp}
+      alternateHandler={navigateToSignUp}
     >
       <label htmlFor="login-email" className='form__label'>
         <p className="form__label-text">Email *</p>

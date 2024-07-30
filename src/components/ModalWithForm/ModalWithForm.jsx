@@ -12,8 +12,7 @@ export default function ModalWithForm({
   alternateButtonText,
   alternateButton,
   isButtonDisabled,
-  navigateToLogin,
-  navigateToSignUp
+  alternateHandler
 }) {
 
  
@@ -33,7 +32,7 @@ export default function ModalWithForm({
         <button type="submit" className={`form__submit-button ${isButtonDisabled && "form__submit-button_disabled"}`} disabled={isButtonDisabled}>
           {buttonText}
         </button>
-        {alternateButton ? <button type="button" className='modal__button modal__button_alternate' onClick={alternateButtonText === "or Log In" ? navigateToLogin : navigateToSignUp}>{alternateButtonText}</button> : <></>}
+        {alternateButton ? <button type="button" className='modal__button modal__button_alternate' onClick={alternateHandler}>{alternateButtonText}</button> : <></>}
          </div>
       </form>
     </div>

@@ -20,7 +20,7 @@ function isDay({ sunrise, sunset }, currentTime) {
   );
 }
 
-function processServerResponse(res) {
+export function processServerResponse(res) {
   if (res.ok) {
     return res.json();
   } else {

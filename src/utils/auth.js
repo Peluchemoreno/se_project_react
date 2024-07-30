@@ -1,14 +1,5 @@
 const baseUrl = 'http://localhost:4000/';
-
-function checkServerResponse(res){
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject((err) => {
-      console.error(err);
-    });
-  }
-}
+import {processServerResponse} from '../utils/weatherApi'
 
 export function register(email, password, name, avatar){
   return fetch(baseUrl + 'signup', {
@@ -18,7 +9,7 @@ export function register(email, password, name, avatar){
     },
     body: JSON.stringify({email, password, name, avatar})
   })
-  .then(checkServerResponse)
+  .then(processServerResponse)
   .then(() => {
     // immediately sign the user in
     signin(email, password)
@@ -36,7 +27,7 @@ export function signin(email, password){
     },
     body: JSON.stringify({email, password})
   })
-  .then(checkServerResponse)
+  .then(processServerResponse)
   .then(data => {
     localStorage.setItem('jwt', data.token)
     return data
@@ -54,7 +45,7 @@ export function getUser(token){
       authorization: `Bearer ${token}`
     }
   })
-  .then(checkServerResponse)
+  .then(processServerResponse)
   .then(user => {
     return user
   })
