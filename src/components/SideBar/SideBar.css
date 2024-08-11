@@ -3,11 +3,11 @@
 }
 
 .sidebar__profile-image {
-  width: 56px;
   height: 56px;
   border-radius: 50%;
   margin-right: 16px;
   object-fit: cover;
+  min-width: 56px;
 }
 
 .sidebar__profile-image_default {
