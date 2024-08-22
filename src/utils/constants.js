@@ -95,4 +95,4 @@ export const defaultWeatherOptions = [
   },
 ];
 
-export const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.rwtw.strangled.net:4000/' : 'http://localhost:4000/';
+export const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.rwtw.strangled.net/' : 'http://localhost:4000/';
