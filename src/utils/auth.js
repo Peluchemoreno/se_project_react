@@ -1,8 +1,8 @@
-const baseUrl = 'http://localhost:4000/';
+import { BASE_URL } from './constants'
 import {processServerResponse} from '../utils/weatherApi'
 
 export function register(email, password, name, avatar){
-  return fetch(baseUrl + 'signup', {
+  return fetch(BASE_URL + 'signup', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -17,7 +17,7 @@ export function register(email, password, name, avatar){
 }
 
 export function signin(email, password){
-  return fetch(baseUrl + 'signin', {
+  return fetch(BASE_URL + 'signin', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export function signin(email, password){
 }
 
 export function getUser(token){
-  return fetch(baseUrl + 'users/me', {
+  return fetch(BASE_URL + 'users/me', {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

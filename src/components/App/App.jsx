@@ -17,7 +17,8 @@ import { register, signin, getUser } from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext/CurrentUserContext.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
-const api = new Api("http://localhost:4000/");
+import { BASE_URL } from "../../utils/constants.js";
+const api = new Api(BASE_URL);
 
 function App() {
 

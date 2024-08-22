@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "scp -r ./dist/* jmcdmoreno19@rwtw.strangled.net:/home/jmcdmoreno19/frontend"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -27,5 +27,5 @@
     "gh-pages": "^6.1.1",
     "vite": "^5.2.0"
   },
-  "homepage": "https://Peluchemoreno.github.io/se_project_react/"
+  "homepage": "https://rwtw.strangled.net/"
 }

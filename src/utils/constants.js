@@ -94,3 +94,5 @@ export const defaultWeatherOptions = [
     url: new URL("../assets/night/default.svg", import.meta.url).href,
   },
 ];
+
+export const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.rwtw.strangled.net:4000/' : 'http://localhost:4000/';
